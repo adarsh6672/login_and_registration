@@ -18,6 +18,7 @@ public class User {
 
     private String phone;
     private String password;
+    private String role;
 
     public int getId() {
         return id;
@@ -33,6 +34,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {

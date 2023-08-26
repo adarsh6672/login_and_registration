@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      >
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -16,15 +17,19 @@
             <a class="navbar-brand" href="#">WELCOME TO HOME PAGE</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="home">HOME</a></li>
+            <li class=""><a href="profile">PROFILE</a></li>
+
 
         </ul>
-        <button class="btn btn-success navbar-btn">LogOut</button>
+        <form th:action="@{/logout}" method="post" class="d-flex" role="search">
+            <button class="btn btn-success pull-right m-2 mt-2" type="submit">LogOut</button>
+        </form>
     </div>
 </nav>
 
 <div class="container">
-    <h2>WELCOME USER</h2>
+    <h2>WELCOME USER !</h2>
     <p style="font-size:17px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut arcu mi, gravida vitae maximus sagittis, scelerisque sit amet libero. Sed vehicula tortor nec posuere interdum. In interdum eu sem in ultricies. In nec purus dictum, vehicula dui nec, consectetur urna. Vestibulum mattis fermentum nunc quis mollis. Vivamus sodales lectus a felis laoreet blandit. Nam vitae nisi et risus rhoncus aliquam. Etiam posuere risus at massa consectetur, quis semper ipsum faucibus. Pellentesque a auctor odio, eu rutrum ipsum. Sed a malesuada augue, nec rhoncus eros. Mauris velit nisl, porta non eleifend ac, egestas ac sapien. Maecenas velit magna, imperdiet eu eleifend sed, fermentum at erat. Sed lobortis convallis lorem, vehicula consequat purus malesuada vitae.
 
         Aenean faucibus dictum erat, eget vestibulum risus rhoncus vel. Donec non laoreet neque, at placerat neque. Praesent gravida magna sit amet sapien iaculis, sed imperdiet enim faucibus. In porta metus ante, ut dapibus urna accumsan eu. Morbi ut lorem rutrum, molestie purus et, consectetur felis. Pellentesque commodo rhoncus magna vel vulputate. Donec suscipit elementum nisi, id pellentesque lorem elementum at. Curabitur maximus sollicitudin cursus. Proin viverra nisl in libero scelerisque facilisis. Maecenas pharetra diam nisi, nec mattis massa volutpat in. Suspendisse vitae sodales massa. Sed accumsan nisl nec est lobortis, eget rhoncus nisi tempus. Morbi vulputate dolor quis accumsan condimentum. Morbi hendrerit venenatis nulla, ut pulvinar sapien volutpat vitae. Nunc varius justo libero, vitae rutrum nisl mollis quis. Curabitur posuere varius elementum.

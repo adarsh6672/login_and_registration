@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
     @Autowired
-    private UserService userservice;
+    private UserServiceImpl userservice;
     @GetMapping("/")
     public String index(){
         return "login";
@@ -48,6 +48,6 @@ public class HomeController {
             System.out.println("something went wrong");
             session.setAttribute("msg","OOPS..! SOMETHING WENT WRONG");
         }
-        return "register";
+        return "redirect:/register";
     }
 }

@@ -4,6 +4,7 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 import com.usermanagement.usermanagement.entity.User;
 import com.usermanagement.usermanagement.service.UserService;
 import com.usermanagement.usermanagement.service.UserServiceImpl;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestBindingException;
@@ -37,14 +38,15 @@ public class HomeController {
         return "home";
     }
     @PostMapping("/saveuser")
-    public String saveUser(@ModelAttribute User user){
-        System.out.println(user);
+    public String saveUser(@ModelAttribute User user, HttpSession session){
         User u=userservice.saveUser(user);
 
         if(u!=null){
             System.out.println("successfuly saved");
+            session.setAttribute("msg","REGISTRATION SUCCESSFUL..!");
         }else {
             System.out.println("something went wrong");
+            session.setAttribute("msg","OOPS..! SOMETHING WENT WRONG");
         }
         return "register";
     }

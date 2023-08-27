@@ -23,8 +23,8 @@ import java.security.Principal;
 public class HomeController {
     @Autowired
     private UserServiceImpl userservice;
-    @Autowired
-    private UserRepo userRepo;
+//    @Autowired
+//    private UserRepo userRepo;
     @GetMapping("/")
     public String index(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -56,17 +56,6 @@ public class HomeController {
         return "redirect:/user/home";
 
     }
-    @GetMapping("/user/profile")
-    public String profile(Principal p, Model m){
-        String email=p.getName();
-        User user=userRepo.findByEmail(email);
-        m.addAttribute("user",user);
-        return "profile";
-    }
-    @GetMapping("/user/home")
-    public String home(){
-        return "home";
-    }
     @PostMapping("/saveuser")
     public String saveUser(@ModelAttribute User user, HttpSession session){
         User u=userservice.saveUser(user);
@@ -80,8 +69,36 @@ public class HomeController {
         }
         return "redirect:/register";
     }
-//    @GetMapping("/loginuser")
-//    public String loginUser(){
+
+//   @ModelAttribute
+//    public void profile(Principal p, Model m){
+//        if(p != null) {
+//            String email = p.getName();
+//            User user = userRepo.findByEmail(email);
+//            m.addAttribute("user", user);
+//        }
+//
+//    }
+//    @GetMapping("/user/home")
+//    public String home(){
 //        return "home";
+//    }
+
+//    @GetMapping("/admin/management")
+//    public String management(){
+//        return "management";
+//    }
+////    @GetMapping("/admin/profile")
+////    public String adprofile(Principal p, Model m){
+////        String email=p.getName();
+////        User user=userRepo.findByEmail(email);
+////        m.addAttribute("user",user);
+////        return "profile";
+////    }
+//
+//
+//    @GetMapping("/admin/home")
+//    public String adhome(){
+//        return "management";
 //    }
 }

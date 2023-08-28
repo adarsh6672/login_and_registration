@@ -28,7 +28,7 @@
 
 <div class="container my-2">
     <h1>USER DATA</h1>
-    <a href ="userform" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+    <a href ="userform" class="btn btn-success btn-sm mb-3">Add User</a>
     <table class="table table-bordered border-primary table-striped table-responsive-md">
         <thead>
         <th>ID</th>
@@ -36,6 +36,7 @@
         <th>EMAIL</th>
         <th>PHONE</th>
         <th>ROLE</th>
+        <th>ACTIONS</th>
         </thead>
         <tbody>
         <tr th:each="users : ${userdata}">
@@ -44,6 +45,11 @@
             <td th:text="${users.email}"></td>
             <td th:text="${users.phone}"></td>
             <td th:text="${users.role}"></td>
+            <td><a  th:href="@{'/admin/updateForm/'+${users.id}}"  class="btn btn-primary">Edit</a>
+<!--            <td><form th:action="@{/admin/updateForm/+'${users.id}'}" action="" method="post"  role="search">-->
+<!--                <button class="btn btn-primary" type="submit">Update</button>-->
+            </form>
+                <a th:href="@{'/admin/deleteuser/'+${users.id}}"  class="btn btn-danger">Delete</a> </td>
         </tr>
         </tbody>
     </table>

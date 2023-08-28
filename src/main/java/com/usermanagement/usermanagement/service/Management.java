@@ -9,4 +9,8 @@ public interface Management {
 
 
     public User saveNewUser(User user);
+
+    User getUserById(int id);
+
+    public User updateUser(User user);
 }

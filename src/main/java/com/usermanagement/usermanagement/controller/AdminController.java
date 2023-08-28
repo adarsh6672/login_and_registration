@@ -8,12 +8,10 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -61,6 +59,30 @@ public class AdminController {
 
         return "redirect:management";
     }
+        @GetMapping("/updateForm/{id}")
+        public String updateForm(@PathVariable (value ="id")int id ,Model model){
+            Optional<User> user=userRepo.findById(id);
+            User usr=user.get();
+            model.addAttribute("users" , usr);
+            return "updationform";
+        }
 
+        @GetMapping("/updationform")
+        public String updateuser(){
+        return "updationform";
+        }
+
+    @PostMapping("/updateuser")
+    public String updateUser(@ModelAttribute User users){
+        management.updateUser(users);
+
+        return "redirect:management";
     }
+    @GetMapping("/deleteuser/{id}")
+    public String deleteUser(@PathVariable (value = "id")int id){
+        userRepo.deleteById(id);
+        return "redirect:/admin/management";
+    }
+
+}
 

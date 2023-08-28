@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>user data updation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>ADD NEW USER</h1>
+
+
+    <form id="form4"  th:action="@{/admin/updateuser}"  method="post" action="">
+
+        <input type="hidden" th:value="${users.id}"  name="id" id="regid">
+
+        <div class="form-outline mb-4">
+            <label class="form-label"  for="regName"> Name</label>
+            <input type="text" id="regname" th:value="${users.name}" name="name" class="form-control form-control-lg" />
+
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label"  for="Email"> Email</label>
+
+            <input type="email" id="Email"  th:value="${users.email}" name="email" class="form-control form-control-lg" />
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label"  for="regPhone"> Phone</label>
+
+            <input type="number" id="regphone" th:value="${users.phone}"  name="phone" class="form-control form-control-lg" />
+        </div>
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label"  for="regrole">Role</label>
+
+            <input type="text" id="regrole" th:value="${users.role}"   name="role" class="form-control form-control-lg" />
+        </div>
+        <div class="form-outline mb-4">
+            <input type="hidden" id="regpassword"name="password" th:value="${users.password}" class="form-control form-control-lg" />
+        </div>
+
+
+
+        <div class="d-flex justify-content-center">
+            <button type="submit"
+                    class="btn btn-primary btn-block btn-lg  text-white">Update</button>
+        </div>
+
+
+    </form>
+    <div class="d-flex justify-content-center pt-5">
+        <a th:href="@{/admin/management}"
+                                       class="btn btn-danger btn-block btn-lg  text-white">Back</a>
+    </div>
+
+
+</div>
+</body>
+</html>

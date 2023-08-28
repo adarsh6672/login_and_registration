@@ -6,11 +6,13 @@ import com.usermanagement.usermanagement.service.Management;
 import com.usermanagement.usermanagement.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -83,6 +85,18 @@ public class AdminController {
         userRepo.deleteById(id);
         return "redirect:/admin/management";
     }
+    @GetMapping("/searchuser")
+    public String getUsers(@RequestParam(value = "query", required = false) String query, Model model) {
+        List<User> users;
+        if (query != null && !query.isEmpty()) {
+            users = management.searchUser(query);
+        } else {
+            users =management.getAllUsers();
+        }
+        model.addAttribute("userdata", users);
+        return "management";
+    }
+
 
 }
 

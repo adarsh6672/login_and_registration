@@ -13,4 +13,6 @@ public interface Management {
     User getUserById(int id);
 
     public User updateUser(User user);
+
+    List<User> searchUser(String query);
 }

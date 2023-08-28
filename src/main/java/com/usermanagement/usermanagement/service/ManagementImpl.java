@@ -50,5 +50,11 @@ public class ManagementImpl implements Management{
         return newuser;
     }
 
+    @Override
+    public List<User> searchUser(String query) {
+       List<User> us= userRepo.searchUser(query);
+       return us;
+    }
+
 
 }

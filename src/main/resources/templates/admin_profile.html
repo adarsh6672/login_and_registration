@@ -13,36 +13,24 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"> PROFILE PAGE</a>
+            <a class="navbar-brand text-success" href="#">WELCOME TO USER MANAGEMENT SYSTEM</a>
         </div>
         <ul class="nav navbar-nav">
             <li class=""><a href="home">HOME</a></li>
             <li class="active"><a href="profile">PROFILE</a></li>
+            <li class=""><a href="management">USER MANAGEMENT</a></li>
         </ul>
         <form th:action="@{/logout}" method="post" class="d-flex" role="search">
             <button class="btn btn-success pull-right m-2" type="submit">LogOut</button>
         </form>
     </div>
 </nav>
-
-
-<div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                <div class="card-body p-5 text-center">
-                    <div class="mb-md-5 mt-md-4 pb-5">
+                    <div align="center">
                         <h1>ADMIN DETAILS</h1>
                         <h2>NAME : [[${user.name}]]</h2>
                         <h2>E MAIL : [[${user.email}]]</h2>
                         <h2>MOB NO : [[${user.phone}]]</h2>
                         <h2>ROLE : [[${user.role}]]</h2>
                     </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

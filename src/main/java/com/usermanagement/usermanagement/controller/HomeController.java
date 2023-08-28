@@ -32,7 +32,7 @@ public class HomeController {
             return "login";
         }
 
-        return "redirect:/user/home";
+        return "redirect/admin/home:";
 
     }
     @GetMapping("/register")
@@ -42,7 +42,7 @@ public class HomeController {
             return "register";
         }
 
-        return "redirect:/user/home";
+        return "redirect:/admin/home";
 
     }
 
@@ -53,7 +53,7 @@ public class HomeController {
             return "login";
         }
 
-        return "redirect:/user/home";
+        return "redirect:/admin/home";
 
     }
     @PostMapping("/saveuser")

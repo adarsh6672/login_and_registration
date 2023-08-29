@@ -46,7 +46,7 @@
     <h1>USER DATA</h1>
     <form th:action="@{/admin/searchuser}" method="get">
     <div class="input-group mb-3">
-        <input type="search" name="query" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <input type="search" name="query" class="form-control rounded" th:placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="submit" class="btn btn-primary">search</button>
     </div>
     </form>
@@ -74,7 +74,8 @@
 <!--            <td><form th:action="@{/admin/updateForm/+'${users.id}'}" action="" method="post"  role="search">-->
 <!--                <button class="btn btn-primary" type="submit">Update</button>-->
             </form>
-                <a th:href="@{'/admin/deleteuser/'+${users.id}}"  class="btn btn-danger">Delete</a> </td>
+                <a th:href="@{'/admin/deleteuser/'+${users.id}}"
+                   onclick="return confirm('Are you sure you want to delete this item?');"class="btn btn-danger">Delete</a> </td>
         </tr>
         </tbody>
     </table>

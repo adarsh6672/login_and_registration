@@ -22,9 +22,9 @@ public class User {
     private String email;
     @Pattern(regexp = "\\d{10}", message = "Mobile phone number must have exactly 10 digits")
     private String phone;
-    @Size(min = 8, message = "Password must be at least 8 characters long")
+
     private String password;
-    @Pattern(regexp = "^(ROLE_ADMIN|ROLE_USER)$", message = "ROLE must be either ROLE_USER or ROLE_ADMIN")
+
     private String role;
 
     public int getId() {

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,8 +28,8 @@ import java.security.Principal;
 public class HomeController {
     @Autowired
     private UserServiceImpl userservice;
-//    @Autowired
-//    private UserRepo userRepo;
+    @Autowired
+    private UserRepo userRepo;
 
 
     @GetMapping("/")
@@ -49,16 +50,7 @@ public class HomeController {
         // Redirect to a default page if no matching role is found.
         return "redirect:/default/home";
     }
-//    @GetMapping("/")
-//    public String index(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-//            return "login";
-//        }
-//
-//        return "redirect/admin/home:";
-//
-//    }
+
 
     @GetMapping("/register")
     @Secured({"ROLE_ADMIN", "ROLE_USER"}) // Define the roles that can access this endpoint
@@ -79,26 +71,7 @@ public class HomeController {
         return "redirect:/default/home";
     }
 
-//    @PostMapping("/registere")
-//    public String registerUser(@Valid User user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "register";
-//        }
-//
-//        // Process user registration
-//
-//        return "redirect:/";
-//    }
-//    @GetMapping("/register")
-//    public String register(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-//            return "register";
-//        }
-//
-//        return "redirect:/admin/home";
-//
-//    }
+
 
 
     @GetMapping("/login")
@@ -121,16 +94,7 @@ public class HomeController {
     }
 
 
-    //    @GetMapping("/login")
-//    public String login(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-//            return "login";
-//        }
-//
-//        return "redirect:/admin/home";
-//
-//    }
+
     @PostMapping("/saveuser")
     public String saveUser(@ModelAttribute User user, HttpSession session){
         User u=userservice.saveUser(user);
@@ -144,6 +108,11 @@ public class HomeController {
         }
         return "redirect:/register";
     }
+
+
+
+
+
 
 
 }
